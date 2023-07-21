@@ -14,10 +14,16 @@ public class Spider
     private BufferedImage image;
     private BufferedImage[] images = new BufferedImage[4];
 
+    // References
+    private Cell[][] cells;
+
     // Constructor
     public Spider(int x, int y, int dir)
     {
         this.dir = dir;
+
+        // grab references
+        cells = DataSource.getInstance().getCurrentLevel().getCells();
 
         // assign the spider an image
         importImages();
@@ -53,15 +59,28 @@ public class Spider
     // Will translate Spider's position according to current direction
     public void move()
     {
-        DataSource.getInstance().get
-        if (dir == 0)
-            y++;
-        else if (dir == 1)
-            x++;
-        else if (dir == 2)
-            y--;
-        else
-            x--;
+        for (int x = 0; x < 2; x++)
+        {
+            for (int y = 0; y < 2; y++)
+            {
+                if (cells[x][y].spider)
+                {
+                    cells[x][y].spider = false;
+
+                    if (dir == 0)
+                        y++;
+                    else if (dir == 1)
+                        x++;
+                    else if (dir == 2)
+                        y--;
+                    else
+                        x--;
+
+                    cells[x][y].spider = true;
+                }
+            }
+        }
+
     }
 
     public void draw(Graphics g, int size) {

@@ -5,8 +5,11 @@ public class DataSource extends Observable {
     private static DataSource _instance;
 
     // levels
+    private int currentLevel = 1;
+    public int getCurrentLevelNum() { return currentLevel; }
+    public Level getCurrentLevel() { return levels[currentLevel]; }
     private Level[] levels;
-    public void getLevel(int idx) { return levels[idx]; }
+    public Level getLevel(int idx) { return levels[idx]; }
 
 // TODO the following should be in the Level class
 
