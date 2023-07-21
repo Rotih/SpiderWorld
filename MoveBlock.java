@@ -1,9 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class StepBlock extends Block {
-    public StepBlock() {
-        super("Step");
+public class MoveBlock extends Block {
+    public MoveBlock(String type) {
+        super(type);
         setBackground(Color.GRAY);
     }
 
