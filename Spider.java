@@ -6,9 +6,6 @@ import java.io.IOException;
 
 public class Spider
 {
-    // Coordinates
-    private int x, y; // TODO does this need coordinates if it's restricted to cells?
-
     // Rotation
     private int dir; // index in array of dirs
     private char[] dirs = {'N', 'E', 'S', 'W'};
@@ -20,8 +17,6 @@ public class Spider
     // Constructor
     public Spider(int x, int y, int dir)
     {
-        this.x = x;
-        this.y = y;
         this.dir = dir;
 
         // assign the spider an image
@@ -58,6 +53,7 @@ public class Spider
     // Will translate Spider's position according to current direction
     public void move()
     {
+        DataSource.getInstance().get
         if (dir == 0)
             y++;
         else if (dir == 1)
