@@ -3,6 +3,7 @@ import java.util.Observable;
 public class DataSource extends Observable {
     // class setup
     private static DataSource _instance;
+    private ArrayList<Block> connectedBlocks;
 
     // levels
     private int currentLevel = 1;
@@ -27,6 +28,7 @@ public class DataSource extends Observable {
     // constructor (private for singleton)
     private DataSource()
     {
+        connectedBlocks = new ArrayList<>();
         // nothing yet!
     }
 
@@ -41,6 +43,15 @@ public class DataSource extends Observable {
     public void delete(Object o)
     {
         System.out.println("Attempted to delete a class in DataSource.");
+    }
+
+    //methods for blocks
+    public void addConnectedBlock(Block block) {
+        connectedBlocks.add(block);
+    }
+
+    public ArrayList<Block> getConnectedBlocks() {
+        return connectedBlocks;
     }
 
 }
