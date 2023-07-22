@@ -20,7 +20,7 @@ public class World extends Canvas {
     public void draw(Graphics g){
         int cellWidth = 50;
         int cellHeight = 50;
-        Cell[][] arr = Levels.getLevel(level);
+        Cell[][] arr = Level.getLevel(level);
         for (int row = 0; row < arr.length; row++){
             for (int col = 0; col < arr[row].length; col++){
                 Cell temp = arr[row][col];
@@ -36,7 +36,7 @@ public class World extends Canvas {
                     //
                 }
                 if (temp.spider == true){
-                    g.drawImage()
+
                 }
             }
         }

@@ -19,7 +19,7 @@ public class Level {
                 cells[0][0] = new Cell(1, Cell.Diamond.DEFAULT, false);
                 cells[0][1] = new Cell(2, Cell.Diamond.RED, false);
                 cells[1][0] = new Cell(3, Cell.Diamond.GREEN, false);
-                cells[1][1] = new Cell(3, Cell.Diamond.GREEN, false);
+                cells[1][1] = new Cell(4, Cell.Diamond.GREEN, false);
                 break;
             case 2:
                 cells = new Cell[3][3];
@@ -31,4 +31,4 @@ public class Level {
         return cells;
     }
 }
-}
+
