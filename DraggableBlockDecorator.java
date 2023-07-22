@@ -9,7 +9,7 @@ public class DraggableBlockDecorator extends Block {
     private boolean dragging;
 
     public DraggableBlockDecorator(Block decoratedBlock) {
-        super("");
+        super(decoratedBlock.getType());
         this.decoratedBlock = decoratedBlock;
         setLayout(new BorderLayout());
         add(decoratedBlock);
@@ -24,6 +24,7 @@ public class DraggableBlockDecorator extends Block {
             @Override
             public void mouseReleased(MouseEvent e) {
                 dragging = false;
+                snapToOtherBlock();
             }
         });
         addMouseMotionListener(new MouseMotionAdapter() {
@@ -37,7 +38,32 @@ public class DraggableBlockDecorator extends Block {
         });
     }
 
+    private void snapToOtherBlock() {
+        for (Component component : getParent().getComponents()) {
+            if (component instanceof DraggableBlockDecorator && component != this) {
+                DraggableBlockDecorator otherBlock = (DraggableBlockDecorator) component;
+
+                int thisBottom = getY() + getHeight();
+                int otherBottom = otherBlock.getY() + otherBlock.getHeight();
+                int snapThreshold = 20; // Adjust for sensitivity
+
+                if (Math.abs(thisBottom - otherBlock.getY()) < snapThreshold) {
+                    setLocation(getX(), otherBlock.getY() - getHeight());
+                    return;
+                }
+
+
+                if (Math.abs(getY() - otherBottom) < snapThreshold) {
+                    setLocation(getX(), otherBlock.getY() + otherBlock.getHeight());
+                    return;
+                }
+            }
+        }
+    }
+
+
     @Override
     public void draw() {
+
     }
 }
