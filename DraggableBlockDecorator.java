@@ -49,19 +49,16 @@ public class DraggableBlockDecorator extends Block {
                 int otherBottom = otherBlock.getY() + otherBlock.getHeight();
                 int snapThreshold = 10; // Adjust this value as needed for snapping sensitivity
 
-                // Check if the bottom edge of this block is close to the top edge of the other block
                 if (Math.abs(thisBottom - otherBlock.getY()) < snapThreshold) {
-                    // Snap this block to the top of the other block
                     setLocation(getX(), otherBlock.getY() - getHeight());
                     snapped = true;
                     break;
                 }
 
-                // Check if the top edge of this block is close to the bottom edge of the other block
                 if (Math.abs(getY() - otherBottom) < snapThreshold) {
-                    // Snap this block to the bottom of the other block
+
                     setLocation(getX(), otherBlock.getY() + otherBlock.getHeight());
-                    // Add this block to the connectedBlocks list
+            
                     DataSource.getInstance().addConnectedBlock(this);
                     snapped = true;
                     break;
@@ -69,7 +66,7 @@ public class DraggableBlockDecorator extends Block {
             }
         }
 
-        // not snapped to any other block remove it from connectedBlocks list
+    
         if (!snapped) {
             DataSource.getInstance().getConnectedBlocks().remove(this);
         }
