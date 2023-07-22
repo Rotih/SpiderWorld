@@ -9,10 +9,9 @@ public class MoveBlock extends Block {
 
     @Override
     public void draw() {
-        JLabel textLabel = new JLabel(label);
-        textLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+        JLabel textLabel = new JLabel(type);
+        textLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 
-        // Add textLabel to the JPanel
         add(textLabel);
     }
 }
