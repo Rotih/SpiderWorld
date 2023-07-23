@@ -5,9 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66b5ffac-4dd0-4e3b-8cb1-4aaad70a5d59" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/DataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkAreaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/WorkAreaPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoveBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoveBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/PaintBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/World.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WorldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/WorldPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/Block.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/DraggableBlockDecorator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/DraggableBlockDecorator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/DraggableBlockDecorator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/DraggableBlockDecorator$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/DraggableBlockDecorator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/DraggableBlockDecorator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/MoveBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/MoveBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/PaintBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/PaintBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/WorkAreaPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/WorkAreaPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/World$DrawGrid.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/World.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/WorldPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/WorldPanel.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,9 +52,18 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/rohit/Desktop/Random/SpiderWorld307&quot;
+    &quot;last_opened_file_path&quot;: &quot;/Users/rohit/Desktop/Random/SpiderWorld308&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="SpiderWorld" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Game" />
+      <module name="SpiderWorld307" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

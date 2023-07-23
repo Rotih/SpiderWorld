@@ -7,28 +7,69 @@ public class Game extends JFrame implements ActionListener {
     private WorldPanel worldPanel;
     private WorkAreaPanel workAreaPanel;
     public Game() {
-        super("SpiderWorld");
-        setLayout(new BorderLayout());
+        JFrame frame = new JFrame("SpiderWorld");
+        frame.setLayout(new GridBagLayout());
 
+        // Create the main panels
+        JPanel northPanel = createPanel(Color.black);
+        //JPanel westPanel = createPanel(Color.lightGray);
+        //JPanel eastPanel = createPanel(Color.lightGray);
         workAreaPanel = new WorkAreaPanel();
-        workAreaPanel.addMouseListener(workAreaPanel);
-
-        JButton runButton = new JButton("Run");
-        runButton.addActionListener(this);
-        workAreaPanel.add(runButton);
-
         worldPanel = new WorldPanel();
-        worldPanel.addMouseListener(worldPanel);
+        JButton runButton = new JButton("Run");
 
-        add(worldPanel, BorderLayout.CENTER);
-        add(workAreaPanel, BorderLayout.LINE_END);
+        // Add the main panels to the frame with GridBagLayout
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0; // Adjust the weightx value to make the east panel wider
+        gbc.weighty = 0.1; // Adjust the weighty value to make the north panel taller
+        gbc.fill = GridBagConstraints.BOTH;
+        frame.add(northPanel, gbc);
+        northPanel.add(runButton);
+
+        gbc.gridy = 1;
+        gbc.weightx = 0.4; // (40% of the width)
+        gbc.weighty = 0.6; // Adjust the weighty value to make the westEastContainer taller
+
+
+        JPanel westEastContainer = new JPanel(new GridBagLayout());
+        frame.add(westEastContainer, gbc);
+
+
+        GridBagConstraints westGbc = new GridBagConstraints();
+        westGbc.gridx = 0;
+        westGbc.gridy = 0;
+        westGbc.weightx = 0.4;
+        westGbc.weighty = 1.0;
+        westGbc.fill = GridBagConstraints.BOTH;
+        westEastContainer.add(worldPanel, westGbc);
+
+        GridBagConstraints eastGbc = new GridBagConstraints();
+        eastGbc.gridx = 1;
+        eastGbc.gridy = 0;
+        eastGbc.weightx = 0.6;
+        eastGbc.weighty = 1.0;
+        eastGbc.fill = GridBagConstraints.BOTH;
+        westEastContainer.add(workAreaPanel, eastGbc);
+
+        // Set the default window size
+        frame.setPreferredSize(new Dimension(1200, 750));
+
+        frame.pack();
+        frame.setVisible(true);
     }
+
+    private static JPanel createPanel(Color color) {
+        JPanel panel = new JPanel();
+        panel.setBackground(color);
+        panel.setLayout(new BorderLayout());
+        return panel;
+    }
+
     public static void main(String[] args) {
         Game spiderWorld = new Game();
-        spiderWorld.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        spiderWorld.setSize(1200, 750);
-        spiderWorld.setVisible(true);
-        spiderWorld.setResizable(true);
     }
 
     @Override
@@ -37,7 +78,7 @@ public class Game extends JFrame implements ActionListener {
             JButton button = (JButton) e.getSource();
             if (button.getText().equals("Run")) {
                 //run blocks
-                repaint();
+
             }
         }
     }
