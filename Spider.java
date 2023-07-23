@@ -6,25 +6,22 @@ import java.io.IOException;
 
 public class Spider
 {
+    int row;
+    int col;
     // Rotation
-    private int dir; // index in array of dirs
-    private char[] dirs = {'N', 'E', 'S', 'W'};
+    public int dir; // index in array of dirs
+    public char[] dirs = {'N', 'E', 'S', 'W'};
 
     // Images
     private BufferedImage image;
     private BufferedImage[] images = new BufferedImage[4];
 
-    // References
-    private Cell[][] cells;
-
     // Constructor
-    public Spider(int x, int y, int dir)
+    public Spider(int row, int col)
     {
-        this.dir = dir;
-
-        // grab references
-        cells = DataSource.getInstance().getCurrentLevel().getCells();
-
+        this.dir = 0;
+        this.row = row;
+        this.col = col;
         // assign the spider an image
         importImages();
         updateImage();
@@ -59,32 +56,19 @@ public class Spider
     // Will translate Spider's position according to current direction
     public void move()
     {
-        for (int x = 0; x < 2; x++)
-        {
-            for (int y = 0; y < 2; y++)
-            {
-                if (cells[x][y].spider)
-                {
-                    cells[x][y].spider = false;
 
-                    if (dir == 0)
-                        y++;
-                    else if (dir == 1)
-                        x++;
-                    else if (dir == 2)
-                        y--;
-                    else
-                        x--;
-
-                    cells[x][y].spider = true;
-                }
-            }
-        }
-
+        if (dir == 0)
+            row--;
+        else if (dir == 1)
+            col++;
+        else if (dir == 2)
+            row--;
+        else
+            col--;
     }
 
-    public void draw(Graphics g, int size) {
-        g.drawImage(image, 0, 0, null);
+    public void draw(Graphics g, int x, int y) {
+        g.drawImage(image, x, y, null);
     }
 
     // for use with the Turn button
