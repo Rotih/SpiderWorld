@@ -6,13 +6,14 @@ import java.awt.event.MouseListener;
 public class WorkAreaPanel extends JPanel implements MouseListener {
 
     public WorkAreaPanel() {
-
+        setBackground(Color.lightGray);
     }
 
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
     }
 
     @Override

@@ -13,10 +13,15 @@ public class Game extends JFrame implements ActionListener {
         workAreaPanel = new WorkAreaPanel();
         workAreaPanel.addMouseListener(workAreaPanel);
 
+        JButton runButton = new JButton("Run");
+        runButton.addActionListener(this);
+        workAreaPanel.add(runButton);
+
         worldPanel = new WorldPanel();
         worldPanel.addMouseListener(worldPanel);
 
-        add(workAreaPanel, BorderLayout.CENTER);
+        add(worldPanel, BorderLayout.CENTER);
+        add(workAreaPanel, BorderLayout.LINE_END);
     }
     public static void main(String[] args) {
         Game spiderWorld = new Game();
@@ -28,6 +33,12 @@ public class Game extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() instanceof JButton) {
+            JButton button = (JButton) e.getSource();
+            if (button.getText().equals("Run")) {
+                //run blocks
+                repaint();
+            }
+        }
     }
 }
