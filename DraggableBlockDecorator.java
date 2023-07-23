@@ -8,8 +8,8 @@ public class DraggableBlockDecorator extends Block {
     private int offsetY;
     private boolean dragging;
 
-    public DraggableBlockDecorator(Block decoratedBlock) {
-        super(decoratedBlock.getType());
+    public DraggableBlockDecorator(Block decoratedBlock, int width, int height) {
+        super(decoratedBlock.getType(),width, height);
         this.decoratedBlock = decoratedBlock;
         setLayout(new BorderLayout());
         add(decoratedBlock);
@@ -58,7 +58,7 @@ public class DraggableBlockDecorator extends Block {
                 if (Math.abs(getY() - otherBottom) < snapThreshold) {
 
                     setLocation(getX(), otherBlock.getY() + otherBlock.getHeight());
-            
+
                     DataSource.getInstance().addConnectedBlock(this);
                     snapped = true;
                     break;
@@ -66,7 +66,7 @@ public class DraggableBlockDecorator extends Block {
             }
         }
 
-    
+
         if (!snapped) {
             DataSource.getInstance().getConnectedBlocks().remove(this);
         }
