@@ -52,4 +52,12 @@ public class DataSource extends Observable {
         return connectedBlocks;
     }
 
+    public String[] getBlocksRunnable() {
+        String[] connected = new String[connectedBlocks.size()];
+        for (int i = 0; i < connectedBlocks.size(); i++) {
+            connected[i] = connectedBlocks.get(i).getType();
+        }
+        return connected;
+    }
+
 }

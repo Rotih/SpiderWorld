@@ -83,7 +83,7 @@ public class Game extends JFrame implements ActionListener {
             JButton button = (JButton) e.getSource();
             if (button.getText().equals("Run")) {
                 //run blocks
-
+                worldPanel.run(DataSource.getInstance().getBlocksRunnable());
             }
         }
     }
