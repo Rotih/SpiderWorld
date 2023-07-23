@@ -5,7 +5,7 @@ public class PaintBlock extends Block {
 
     Color PaintCustom = new Color(199, 125, 72);
     public PaintBlock(String type) {
-        super(type);
+        super(type, 85, 25);
         setBackground(PaintCustom);
     }
 
