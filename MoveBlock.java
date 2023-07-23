@@ -2,8 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MoveBlock extends Block {
-    public MoveBlock(String type) {
-        super(type);
+    public MoveBlock(String type, int width, int height) {
+        super(type, width, height);
         setBackground(Color.GRAY);
     }
 
