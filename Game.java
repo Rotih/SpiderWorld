@@ -18,6 +18,7 @@ public class Game extends JFrame implements ActionListener {
         workAreaPanel = new WorkAreaPanel();
         worldPanel = new WorldPanel();
         JButton runButton = new JButton("Run");
+        runButton.addActionListener(this);
         JButton levelone = new JButton("1");
         JButton leveltwo = new JButton("2");
 

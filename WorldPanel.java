@@ -22,6 +22,7 @@ public class WorldPanel extends JPanel implements MouseListener {
     }
 
     public void run(String [] sample) {
+        System.out.println("running");
         for (int i = 0; i < sample.length; i++) {
             if (sample[i].equals("turn")) {
                 w.spider.turn();

@@ -9,6 +9,9 @@
       <change beforePath="$PROJECT_DIR$/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/DataSource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/WorldPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/WorldPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/WorldPanel.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
