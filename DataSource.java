@@ -20,10 +20,7 @@ public class DataSource extends Observable {
 //    public Cell[][] getCells() { return cells; }
 //    public Cell getCell(int x, int y) { return cells[x][y]; }
 
-    // spider
-    private Spider spider;
-    public void createSpider(int x, int y, int dir) { spider = new Spider(x, y, dir); }
-    public Spider getSpider() { return spider; }
+   
 
     // constructor (private for singleton)
     private DataSource()
