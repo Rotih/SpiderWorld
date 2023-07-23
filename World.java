@@ -1,45 +1,90 @@
+import javax.swing.*;
 import java.awt.*;
 
-public class World extends Canvas {
+public class World extends JFrame {
     public int level;
-//    public Cell[][] arr;
+
+    public Cell[][] arr;
+    public Spider spider;
    // public Levels levels;
-    public World(int level){
+    public World(int level, int width, int height){
+        spider = null;
         this.level = level;
-       // arr = levels.getLevel(level);
+        arr = Level.getLevel(level);
+        // double for loop checking for spider boolean
+        // we get coords of spider
+        // assign to new spider instance
+        for (int i = 0; i < arr.length; i++){
+            for (int j = 0; j < arr[i].length; j++){
+                if (arr[i][j].spider != null){
+                    spider = arr[i][j].spider;
+                    break;
+                }
+            }
+            if (spider != null){
+                break;
+            }
+        }
+        setSize(width,height);
+        setBounds(0, 0, width, height);
+        DrawGrid draw_grid = new DrawGrid();
+        add(draw_grid);
+        pack();
     }
 
-    /*
-    public World(int level, Cell[][] arr)
+
+
+    public void run(String [] sample){
+        for (int i = 0; i < sample.length; i++){
+            if (sample[i].equals("turn")){
+                spider.turn();
+            }
+            else if (sample[i].equals("step")){
+                int newRow = spider.row;
+                int newCol = spider.col;
+                if (spider.dir == 0){
+                    newRow--;
+                }
+                else if (spider.dir == 1){
+                    newCol++;
+                }
+                else if (spider.dir == 2){
+                    newRow++;
+                }
+                else{
+                    newCol--;
+                }
+                if (newRow <0 || newCol < 00 || newRow >= arr.length || newCol >= arr[0].length){
+                    // spider out of bounds
+                    //possible pop up box
+                    break;
+                }
+                else{
+                    arr[spider.row][spider.col].spider = null;
+                    spider.move();
+                    arr[spider.row][spider.col].spider = spider;
+                }
+            }
+            repaint();
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+    public class DrawGrid extends JPanel
     {
-        this.level = level;
-        this.arr = arr;
-    }
-    * */
+        public void paint(Graphics g){
 
-    public void draw(Graphics g){
-        int cellWidth = 50;
-        int cellHeight = 50;
-        Cell[][] arr = Level.getLevel(level);
-        for (int row = 0; row < arr.length; row++){
-            for (int col = 0; col < arr[row].length; col++){
-                Cell temp = arr[row][col];
-                g.fillRect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
-                g.setColor(Color.WHITE);
-                if (temp.aDiamond == Cell.Diamond.RED){
-                    //draws a red diamond
-                }
-                else if (temp.aDiamond == Cell.Diamond.GREEN){
-                    //
-                }
-                else if (temp.aDiamond == Cell.Diamond.BLUE){
-                    //
-                }
-                if (temp.spider == true){
+            for (int row = 0; row < arr.length; row++){
+                for (int col = 0; col < arr[row].length; col++){
+                    int tempId = arr[row][col].id;
+                    arr[row][col].draw(g, tempId, row, col);
 
                 }
             }
         }
     }
-
 }
+
