@@ -12,11 +12,14 @@ public class Game extends JFrame implements ActionListener {
 
         // Create the main panels
         JPanel northPanel = createPanel(Color.black);
+        northPanel.setLayout(new FlowLayout());
         //JPanel westPanel = createPanel(Color.lightGray);
         //JPanel eastPanel = createPanel(Color.lightGray);
         workAreaPanel = new WorkAreaPanel();
         worldPanel = new WorldPanel();
         JButton runButton = new JButton("Run");
+        JButton levelone = new JButton("1");
+        JButton leveltwo = new JButton("2");
 
         // Add the main panels to the frame with GridBagLayout
         GridBagConstraints gbc = new GridBagConstraints();
@@ -28,6 +31,8 @@ public class Game extends JFrame implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         frame.add(northPanel, gbc);
         northPanel.add(runButton);
+        northPanel.add(levelone);
+        northPanel.add(leveltwo);
 
         gbc.gridy = 1;
         gbc.weightx = 0.4; // (40% of the width)
