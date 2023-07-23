@@ -2,11 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public abstract class Block extends JPanel {
-    protected String type; 
+    protected String type;
 
-    public Block(String type) {
+    public Block(String type, int width, int height) {
         this.type = type;
-        setPreferredSize(new Dimension(80, 40));
+        setPreferredSize(new Dimension(width, height));
         setBorder(BorderFactory.createLineBorder(Color.BLACK)); // Add black outline
     }
 
@@ -20,11 +20,11 @@ public abstract class Block extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-    
+
         g.setColor(getBackground());
         g.fillRect(0, 0, getWidth(), getHeight());
 
-   
+
         g.setColor(Color.BLACK);
         Font boldFont = new Font("Arial", Font.BOLD, 16);
         g.setFont(boldFont);
