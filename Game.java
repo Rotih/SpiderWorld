@@ -61,7 +61,7 @@ public class Game extends JFrame implements ActionListener {
         westEastContainer.add(workAreaPanel, eastGbc);
 
         // Set the default window size
-        frame.setPreferredSize(new Dimension(1200, 750));
+        frame.setPreferredSize(new Dimension(1400, 800));
 
         frame.pack();
         frame.setVisible(true);
@@ -84,7 +84,7 @@ public class Game extends JFrame implements ActionListener {
             JButton button = (JButton) e.getSource();
             if (button.getText().equals("Run")) {
                 //run blocks
-                worldPanel.run(DataSource.getInstance().getBlocksRunnable());
+                worldPanel.run();
             }
         }
     }

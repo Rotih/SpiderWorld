@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.*;
 
 public class WorldPanel extends JPanel implements MouseListener {
 
@@ -21,32 +22,41 @@ public class WorldPanel extends JPanel implements MouseListener {
         }
     }
 
-    public void run(String [] sample) {
-        System.out.println("running");
-        for (int i = 0; i < sample.length; i++) {
-            if (sample[i].equals("turn")) {
+    public void run(){
+        ArrayList<Block> currBlocks = DataSource.getInstance().getConnectedBlocks();
+        for (Block block: currBlocks){
+            if (block.getType().equals("turn")){
                 w.spider.turn();
-            } else if (sample[i].equals("step")) {
+            }
+            else if (block.getType().equals("step")){
                 int newRow = w.spider.row;
                 int newCol = w.spider.col;
-                if (w.spider.dir == 0) {
+                if (w.spider.dir == 0){
                     newRow--;
-                } else if (w.spider.dir == 1) {
+                }
+                else if (w.spider.dir == 1){
                     newCol++;
-                } else if (w.spider.dir == 2) {
+                }
+                else if (w.spider.dir == 2){
                     newRow++;
-                } else {
+                }
+                else{
                     newCol--;
                 }
-                if (newRow < 0 || newCol < 00 || newRow >= w.arr.length || newCol >= w.arr[0].length) {
+                if (newRow <0 || newCol < 00 || newRow >= w.arr.length || newCol >= w.arr[0].length){
                     // spider out of bounds
                     //possible pop up box
                     break;
-                } else {
+                }
+                else{
                     w.arr[w.spider.row][w.spider.col].spider = null;
                     w.spider.move();
                     w.arr[w.spider.row][w.spider.col].spider = w.spider;
                 }
+            }
+            else if (block.getType().startsWith("paint")){
+                String [] words = block.getType().split("\\s+");
+                w.arr[w.spider.row][w.spider.col].setColor(words[1]);
             }
             repaint();
             try {

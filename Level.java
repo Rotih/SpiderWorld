@@ -72,4 +72,3 @@ public class Level {
         return cells;
     }
 }
-
