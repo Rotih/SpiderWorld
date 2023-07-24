@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public class Spider
 {
+    // Location
     int row;
     int col;
     // Rotation
@@ -74,17 +75,11 @@ public class Spider
     // for use with the Turn button
     public void turn()
     {
-        System.out.println("kdhfhief");
         dir++;
 
         if (dir >= dirs.length)
             dir = 0;
 
         updateImage();
-    }
-
-    public void paintCell()
-    {
-        // should work with the World class
     }
 }
