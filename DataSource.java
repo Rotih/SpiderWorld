@@ -6,28 +6,10 @@ public class DataSource extends Observable {
     private static DataSource _instance;
     private ArrayList<Block> connectedBlocks;
 
-    // levels
-    private int currentLevel = 1;
-    public int getCurrentLevelNum() { return currentLevel; }
-    public Level getCurrentLevel() { return levels[currentLevel]; }
-    private Level[] levels;
-    public Level getLevel(int idx) { return levels[idx]; }
-
-// TODO the following should be in the Level class
-
-//    // cells
-//    private Cell[][] cells;
-//    public void createCells(int n) { cells = new Cell[n][n]; }
-//    public Cell[][] getCells() { return cells; }
-//    public Cell getCell(int x, int y) { return cells[x][y]; }
-
-   
-
     // constructor (private for singleton)
     private DataSource()
     {
         connectedBlocks = new ArrayList<>();
-        // nothing yet!
     }
 
     // for singleton
