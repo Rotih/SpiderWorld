@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66b5ffac-4dd0-4e3b-8cb1-4aaad70a5d59" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/DataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkAreaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/WorkAreaPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/WorldPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/DataSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/DataSource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/Diamond.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,9 +36,18 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/rohit/Desktop/Random/SpiderWorld307&quot;
+    &quot;last_opened_file_path&quot;: &quot;/Users/rohit/Desktop/Random/SpiderWorld308&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="SpiderWorld" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Game" />
+      <module name="SpiderWorld307" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

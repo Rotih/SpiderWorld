@@ -6,19 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="66b5ffac-4dd0-4e3b-8cb1-4aaad70a5d59" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/DataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Spider.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToolBoxPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ToolBoxPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorkAreaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/WorkAreaPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WorldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/WorldPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/DataSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/DataSource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/Spider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/Spider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/WorkAreaPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/WorkAreaPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/World.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/WorldPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/WorldPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/Diamond.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
