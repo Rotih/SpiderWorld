@@ -62,7 +62,7 @@ public class Spider
         else if (dir == 1)
             col++;
         else if (dir == 2)
-            row--;
+            row++;
         else
             col--;
     }
@@ -74,6 +74,7 @@ public class Spider
     // for use with the Turn button
     public void turn()
     {
+        System.out.println("kdhfhief");
         dir++;
 
         if (dir >= dirs.length)

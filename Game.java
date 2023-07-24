@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 public class Game extends JFrame implements ActionListener {
     private WorldPanel worldPanel;
     private WorkAreaPanel workAreaPanel;
+    private ToolBoxPanel toolBox;
     public Game() {
         JFrame frame = new JFrame("SpiderWorld");
         frame.setLayout(new GridBagLayout());
@@ -17,8 +18,34 @@ public class Game extends JFrame implements ActionListener {
         //JPanel eastPanel = createPanel(Color.lightGray);
         workAreaPanel = new WorkAreaPanel();
         worldPanel = new WorldPanel();
+        toolBox = new ToolBoxPanel();
+
+        JButton createTurn = new JButton("New Turn Block");
+        JButton createStep = new JButton("New Step Block");
+        JButton createRed = new JButton("New Paint Red Block");
+        JButton createBlue = new JButton("New Paint Blue Block");
+        JButton createGreen = new JButton("New Paint Green Block");
+
         JButton runButton = new JButton("Run");
+        JButton stepButton = new JButton("Step");
+        JButton turnButton = new JButton("Turn");
+        JButton paintRed = new JButton("Red");
+        JButton paintBlue = new JButton("Blue");
+        JButton paintGreen = new JButton("Green");
+
+
+        createTurn.addActionListener(this);
+        createStep.addActionListener(this);
+        createRed.addActionListener(this);
+        createBlue.addActionListener(this);
+        createGreen.addActionListener(this);
+
         runButton.addActionListener(this);
+        stepButton.addActionListener(this);
+        turnButton.addActionListener(this);
+        paintRed.addActionListener(this);
+        paintBlue.addActionListener(this);
+        paintGreen.addActionListener(this);
         JButton levelone = new JButton("1");
         JButton leveltwo = new JButton("2");
 
@@ -32,6 +59,11 @@ public class Game extends JFrame implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         frame.add(northPanel, gbc);
         northPanel.add(runButton);
+        northPanel.add(stepButton);
+        northPanel.add(turnButton);
+        northPanel.add(paintRed);
+        northPanel.add(paintBlue);
+        northPanel.add(paintGreen);
         northPanel.add(levelone);
         northPanel.add(leveltwo);
 
@@ -47,20 +79,34 @@ public class Game extends JFrame implements ActionListener {
         GridBagConstraints westGbc = new GridBagConstraints();
         westGbc.gridx = 0;
         westGbc.gridy = 0;
-        westGbc.weightx = 0.4;
+        westGbc.weightx = 0.5;
         westGbc.weighty = 1.0;
         westGbc.fill = GridBagConstraints.BOTH;
         westEastContainer.add(worldPanel, westGbc);
 
+        GridBagConstraints centerGbc = new GridBagConstraints();
+        centerGbc.gridx = 1;
+        centerGbc.gridy = 0;
+        centerGbc.weightx = 0.4;
+        centerGbc.weighty = 1.0;
+        centerGbc.fill = GridBagConstraints.BOTH;
+        westEastContainer.add(workAreaPanel, centerGbc);
+
         GridBagConstraints eastGbc = new GridBagConstraints();
-        eastGbc.gridx = 1;
+        eastGbc.gridx = 2;
         eastGbc.gridy = 0;
-        eastGbc.weightx = 0.6;
+        eastGbc.weightx = 0.10;
         eastGbc.weighty = 1.0;
         eastGbc.fill = GridBagConstraints.BOTH;
-        westEastContainer.add(workAreaPanel, eastGbc);
+        westEastContainer.add(toolBox, eastGbc);
+        toolBox.add(createTurn);
+        toolBox.add(createStep);
+        toolBox.add(createRed);
+        toolBox.add(createBlue);
+        toolBox.add(createGreen);
 
         // Set the default window size
+        worldPanel.setPreferredSize(new Dimension(500, 700));
         frame.setPreferredSize(new Dimension(1400, 800));
 
         frame.pack();
@@ -80,12 +126,73 @@ public class Game extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        boolean world = false;
+        boolean work = false;
         if (e.getSource() instanceof JButton) {
             JButton button = (JButton) e.getSource();
             if (button.getText().equals("Run")) {
                 //run blocks
                 worldPanel.run();
+                world = true;
             }
+            else if (button.getText().equals("Step")) {
+                //run blocks
+                worldPanel.runSeparately(button.getText());
+                repaint();
+                world = true;
+            }
+            else if (button.getText().equals("Turn")) {
+                //run blocks
+                System.out.println("turned");
+                worldPanel.runSeparately(button.getText());
+                repaint();
+                world = true;
+            }
+            else if (button.getText().equals("Red")) {
+                //run blocks
+                worldPanel.runSeparately(button.getText());
+                repaint();
+                world = true;
+            }
+            else if (button.getText().equals("Blue")) {
+                //run blocks
+                worldPanel.runSeparately(button.getText());
+                repaint();
+                world = true;
+            }
+            else if (button.getText().equals("Green")) {
+                //run blocks
+                worldPanel.runSeparately(button.getText());
+                repaint();
+                world = true;
+            }
+            else if (button.getText().equals("New Turn Block")) {
+                System.out.println("clicked");
+                workAreaPanel.add(new DraggableBlockDecorator(new MoveBlock("turn", 85, 25), 85, 25));
+                work = true;
+            } else if (button.getText().equals("New Step Block")) {
+                workAreaPanel.add(new DraggableBlockDecorator(new MoveBlock("step", 85, 25), 85, 25));
+                work = true;
+            } else if (button.getText().equals("New Paint Red Block")) {
+                workAreaPanel.add(new DraggableBlockDecorator(new PaintBlock("paint red"), 85, 25));
+                work = true;
+            } else if (button.getText().equals("New Paint Blue Block")) {
+                workAreaPanel.add(new DraggableBlockDecorator(new PaintBlock("paint blue"), 85, 25));
+                work = true;
+            } else if (button.getText().equals("New Paint Green Block")) {
+                workAreaPanel.add(new DraggableBlockDecorator(new PaintBlock("paint green"), 85, 25));
+                work = true;
+            }
+            worldPanel.setPreferredSize(new Dimension(500, 700));
+            if (work == true) {
+                workAreaPanel.repaint();
+                workAreaPanel.revalidate();
+            }
+            if (world == true) {
+                worldPanel.repaint();
+                worldPanel.revalidate();
+            }
+            DataSource.getInstance().resetConnectedBlocks();
         }
     }
 }

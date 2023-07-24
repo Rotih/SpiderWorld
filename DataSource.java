@@ -48,16 +48,23 @@ public class DataSource extends Observable {
         connectedBlocks.add(block);
     }
 
+    public void resetConnectedBlocks() {
+        connectedBlocks = new ArrayList<Block>();
+    }
+
     public ArrayList<Block> getConnectedBlocks() {
         return connectedBlocks;
     }
 
     public String[] getBlocksRunnable() {
-        String[] connected = new String[connectedBlocks.size()];
-        for (int i = 0; i < connectedBlocks.size(); i++) {
+        String[] connected = {"turn", "step"};
+        return connected;
+        //String[] connected = new String[connectedBlocks.size()];
+        /*for (int i = 0; i < connectedBlocks.size(); i++) {
             connected[i] = connectedBlocks.get(i).getType();
         }
         return connected;
+         */
     }
 
 }

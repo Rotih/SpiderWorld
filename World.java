@@ -8,7 +8,7 @@ public class World extends JFrame {
 
     public Cell[][] arr;
     public Spider spider;
-   // public Levels levels;
+    // public Levels levels;
     public World(int level, int width, int height){
         spider = null;
         this.level = level;
@@ -94,4 +94,3 @@ public class World extends JFrame {
         }
     }
 }
-
