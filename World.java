@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class World extends JFrame {
     public int level;
@@ -34,12 +36,13 @@ public class World extends JFrame {
 
 
 
-    public void run(String [] sample){
-        for (int i = 0; i < sample.length; i++){
-            if (sample[i].equals("turn")){
+    public void run(){
+        ArrayList<Block> currBlocks = DataSource.getInstance().getConnectedBlocks();
+        for (Block block: currBlocks){
+            if (block.getType().equals("turn")){
                 spider.turn();
             }
-            else if (sample[i].equals("step")){
+            else if (block.getType().equals("step")){
                 int newRow = spider.row;
                 int newCol = spider.col;
                 if (spider.dir == 0){
@@ -64,6 +67,10 @@ public class World extends JFrame {
                     spider.move();
                     arr[spider.row][spider.col].spider = spider;
                 }
+            }
+            else if (block.getType().startsWith("paint")){
+                String [] words = block.getType().split("\\s+");
+                arr[spider.row][spider.col].setColor(words[1]);
             }
             repaint();
             try {
