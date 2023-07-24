@@ -2,6 +2,7 @@ import java.awt.*;
 
 public class Cell {
     public int id;
+    public String color;
     enum Diamond {
         RED,
         BLUE,
@@ -23,9 +24,13 @@ public class Cell {
         }
         this.id = id;
         this.aDiamond = aDiamond;
-
+        color = "black";
         this.row = row;
         this.col = col;
+    }
+    public void setColor(String color){
+        this.color = color;
+
     }
 
     public void draw(Graphics g, int cellId, int row, int col){
@@ -38,29 +43,20 @@ public class Cell {
         int centerY = y + (height/2);
         int[] diamondX = {centerX-diamondWidth, centerX, centerX+diamondWidth, centerX};
         int[] diamondY = {centerY, centerY-diamondWidth, centerY, centerY+diamondWidth};
-//        switch(cellId){
-//            case(1):
-//                x = 0;
-//                y = 0;
-//                break;
-//            case(2):
-//                x = 100;
-//                y = 0;
-//                break;
-//            case(3):
-//                x = 0;
-//                y = 100;
-//                break;
-//            case(4):
-//                x = 100;
-//                y = 100;
-//                break;
-//            default:
-//                x = 0;
-//                y = 0;
-//        }
+
         //drawing Cell
-        g.setColor(Color.BLACK);
+        if (color.equals("black")){
+            g.setColor(Color.BLACK);
+        } else if (color.equals("red")) {
+            g.setColor(Color.RED);
+        }
+        else if (color.equals("green")) {
+            g.setColor(Color.GREEN);
+        }
+        else if (color.equals("blue")) {
+            g.setColor(Color.BLUE);
+        }
+
         g.fillRect(x, y, width, height);
         g.setColor(Color.WHITE);
         g.drawRect(x, y, width, height);
@@ -92,3 +88,4 @@ public class Cell {
 
 
 }
+
