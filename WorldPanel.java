@@ -80,7 +80,7 @@ public class WorldPanel extends JPanel implements MouseListener {
             }
             repaint();
             try {
-                Thread.sleep(2000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -126,7 +126,7 @@ public class WorldPanel extends JPanel implements MouseListener {
             }
             repaint();
             try {
-                Thread.sleep(2000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
