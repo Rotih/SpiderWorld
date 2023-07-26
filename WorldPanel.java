@@ -7,10 +7,14 @@ import java.util.*;
 public class WorldPanel extends JPanel implements MouseListener {
 
     public World w;
-    public WorldPanel() {
+    public WorldPanel(int levelId) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        w = new World(1, 2, 2);
-        setBackground(Color.lightGray);
+        w = new World(levelId, 2, 2);
+    }
+
+    public void setLevel(int levelId)
+    {
+        w = new World(levelId, 2, 2);
     }
 
     public World getWorld() {
