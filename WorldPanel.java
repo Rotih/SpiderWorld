@@ -17,10 +17,10 @@ public class WorldPanel extends JPanel implements MouseListener {
         return w;
     }
     public void paint(Graphics g){
-        for (int row = 0; row < w.arr.length; row++){
-            for (int col = 0; col < w.arr[row].length; col++){
-                int tempId = w.arr[row][col].id;
-                w.arr[row][col].draw(g, tempId, row, col);
+        for (int row = 0; row < w.cells.length; row++){
+            for (int col = 0; col < w.cells[row].length; col++){
+                int tempId = w.cells[row][col].id;
+                w.cells[row][col].draw(g, tempId, row, col);
             }
         }
     }
@@ -63,20 +63,20 @@ public class WorldPanel extends JPanel implements MouseListener {
                 else{
                     newCol--;
                 }
-                if (newRow <0 || newCol < 00 || newRow >= w.arr.length || newCol >= w.arr[0].length){
+                if (newRow <0 || newCol < 00 || newRow >= w.cells.length || newCol >= w.cells[0].length){
                     // spider out of bounds
                     //possible pop up box
                     break;
                 }
                 else{
-                    w.arr[w.spider.row][w.spider.col].spider = null;
+                    w.cells[w.spider.row][w.spider.col].spider = null;
                     w.spider.move();
-                    w.arr[w.spider.row][w.spider.col].spider = w.spider;
+                    w.cells[w.spider.row][w.spider.col].spider = w.spider;
                 }
             }
             else if (b.getType().startsWith("paint")){
                 String [] words = b.getType().split("\\s+");
-                w.arr[w.spider.row][w.spider.col].setColor(words[1]);
+                w.cells[w.spider.row][w.spider.col].setColor(words[1]);
             }
             repaint();
             try {
@@ -109,20 +109,20 @@ public class WorldPanel extends JPanel implements MouseListener {
                 else{
                     newCol--;
                 }
-                if (newRow <0 || newCol < 00 || newRow >= w.arr.length || newCol >= w.arr[0].length){
+                if (newRow <0 || newCol < 00 || newRow >= w.cells.length || newCol >= w.cells[0].length){
                     // spider out of bounds
                     //possible pop up box
                     break;
                 }
                 else{
-                    w.arr[w.spider.row][w.spider.col].spider = null;
+                    w.cells[w.spider.row][w.spider.col].spider = null;
                     w.spider.move();
-                    w.arr[w.spider.row][w.spider.col].spider = w.spider;
+                    w.cells[w.spider.row][w.spider.col].spider = w.spider;
                 }
             }
             else if (block.getType().startsWith("paint")){
                 String [] words = block.getType().split("\\s+");
-                w.arr[w.spider.row][w.spider.col].setColor(words[1]);
+                w.cells[w.spider.row][w.spider.col].setColor(words[1]);
             }
             repaint();
             try {

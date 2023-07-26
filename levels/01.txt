@@ -1,7 +1,5 @@
--- not working
-
-each cell should be a new line like this:
-
-default, no
-
-where default refers to the diamond type, and the no refers to there being no spider present
+SRDDD
+DDDDD
+DDDDG
+DBDDD
+DDDDD

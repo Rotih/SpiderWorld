@@ -48,6 +48,8 @@ public class Game extends JFrame implements ActionListener {
         paintGreen.addActionListener(this);
         JButton levelone = new JButton("1");
         JButton leveltwo = new JButton("2");
+        levelone.addActionListener(this);
+        leveltwo.addActionListener(this);
 
         // Add the main panels to the frame with GridBagLayout
         GridBagConstraints gbc = new GridBagConstraints();
@@ -184,6 +186,13 @@ public class Game extends JFrame implements ActionListener {
             } else if (button.getText().equals("New Paint Green Block")) {
                 workAreaPanel.add(new DraggableBlockDecorator(new PaintBlock("paint green"), 85, 25));
                 work = true;
+            } else if (button.getText().equals("1"))
+            {
+                System.out.println("selected level 1");
+            }
+             else if (button.getText().equals("2"))
+            {
+                System.out.println("selected level 2");
             }
             worldPanel.setPreferredSize(new Dimension(500, 700));
             if (work == true) {
