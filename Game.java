@@ -7,6 +7,8 @@ public class Game extends JFrame implements ActionListener {
     private WorldPanel worldPanel;
     private WorkAreaPanel workAreaPanel;
     private ToolBoxPanel toolBox;
+    private int currentLevel = 1;
+
     public Game() {
         JFrame frame = new JFrame("SpiderWorld");
         frame.setLayout(new GridBagLayout());
@@ -14,10 +16,8 @@ public class Game extends JFrame implements ActionListener {
         // Create the main panels
         JPanel northPanel = createPanel(Color.black);
         northPanel.setLayout(new FlowLayout());
-        //JPanel westPanel = createPanel(Color.lightGray);
-        //JPanel eastPanel = createPanel(Color.lightGray);
         workAreaPanel = new WorkAreaPanel();
-        worldPanel = new WorldPanel();
+        worldPanel = new WorldPanel(currentLevel);
         toolBox = new ToolBoxPanel();
 
         JButton createTurn = new JButton("New Turn Block");
@@ -115,6 +115,20 @@ public class Game extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
+    private void switchLevel()
+    {
+        worldPanel.setPreferredSize(new Dimension(500, 700));
+            workAreaPanel.repaint();
+            workAreaPanel.revalidate();
+
+            worldPanel.setLevel(currentLevel);
+            worldPanel.repaint();
+            worldPanel.revalidate();
+
+        DataSource.getInstance().resetConnectedBlocks();
+
+    }
+
     private static JPanel createPanel(Color color) {
         JPanel panel = new JPanel();
         panel.setBackground(color);
@@ -128,6 +142,7 @@ public class Game extends JFrame implements ActionListener {
 
         Game spiderWorld = new Game();
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -189,10 +204,14 @@ public class Game extends JFrame implements ActionListener {
             } else if (button.getText().equals("1"))
             {
                 System.out.println("selected level 1");
+                currentLevel = 1;
+                switchLevel();
             }
              else if (button.getText().equals("2"))
             {
                 System.out.println("selected level 2");
+                currentLevel = 2;
+                switchLevel();
             }
             worldPanel.setPreferredSize(new Dimension(500, 700));
             if (work == true) {
@@ -203,7 +222,7 @@ public class Game extends JFrame implements ActionListener {
                 worldPanel.repaint();
                 worldPanel.revalidate();
             }
-            DataSource.getInstance().resetConnectedBlocks();
+
         }
     }
 }
