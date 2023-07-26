@@ -121,6 +121,9 @@ public class Game extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
+        // called once to create DataSource
+        DataSource.getInstance();
+
         Game spiderWorld = new Game();
     }
 
@@ -143,7 +146,6 @@ public class Game extends JFrame implements ActionListener {
             }
             else if (button.getText().equals("Turn")) {
                 //run blocks
-                System.out.println("turned");
                 worldPanel.runSeparately(button.getText());
                 repaint();
                 world = true;

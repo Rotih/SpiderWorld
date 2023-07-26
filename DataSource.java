@@ -1,52 +1,68 @@
+import java.io.File;
 import java.util.Observable;
 import java.util.ArrayList;
 
-public class DataSource extends Observable {
-    // class setup
-    private static DataSource _instance;
-    private ArrayList<Block> connectedBlocks;
+public class DataSource extends Observable
+{
 
-    // constructor (private for singleton)
-    private DataSource()
-    {
-        connectedBlocks = new ArrayList<>();
-    }
+	// class setup
+	private static DataSource _instance;
 
-    // for singleton
-    public static DataSource getInstance() {
-        if (_instance == null)
-            _instance = new DataSource();
+	// constructor (private for singleton)
+	private DataSource()
+	{
+		resetConnectedBlocks();
+		importLevels();
+	}
 
-        return _instance;
-    }
+	// for singleton
+	public static DataSource getInstance()
+	{
+		if (_instance == null) _instance = new DataSource();
 
-    public void delete(Object o)
-    {
-        System.out.println("Attempted to delete a class in DataSource.");
-    }
+		return _instance;
+	}
 
-    //methods for blocks
-    public void addConnectedBlock(Block block) {
-        connectedBlocks.add(block);
-    }
+	// Levels
+	private ArrayList<Level> levels;
 
-    public void resetConnectedBlocks() {
-        connectedBlocks = new ArrayList<Block>();
-    }
+	public void importLevels()
+	{
+		levels = new ArrayList<Level>();
 
-    public ArrayList<Block> getConnectedBlocks() {
-        return connectedBlocks;
-    }
+		File folder = new File("levels/");
+		File[] levelFiles = folder.listFiles();
 
-    public String[] getBlocksRunnable() {
-        String[] connected = {"turn", "step"};
-        return connected;
-        //String[] connected = new String[connectedBlocks.size()];
-        /*for (int i = 0; i < connectedBlocks.size(); i++) {
-            connected[i] = connectedBlocks.get(i).getType();
-        }
-        return connected;
-         */
-    }
+		for (File level : levelFiles) {
+			if (level.isFile()) {
+				String levelName = level.getName().substring(0, level.getName().lastIndexOf('.'));
+				levels.add(new Level(Integer.parseInt(levelName)));
+			}
+		}
+	}
+
+	// Blocks
+	private ArrayList<Block> connectedBlocks;
+
+	public void addConnectedBlock(Block block)
+	{
+		connectedBlocks.add(block);
+	}
+
+	public void resetConnectedBlocks()
+	{
+		connectedBlocks = new ArrayList<Block>();
+	}
+
+	public ArrayList<Block> getConnectedBlocks()
+	{
+		return connectedBlocks;
+	}
+
+	public String[] getBlocksRunnable()
+	{
+		String[] connected = {"turn", "step"};
+		return connected;
+	}
 
 }

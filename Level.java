@@ -1,10 +1,10 @@
 public class Level {
-    public int level;
+    public int id;
     public static Cell[][] cells;
 
-    public Level(int level) {
-        this.level = level;
-        getLevel(level);
+    public Level(int id) {
+        this.id = id;
+        getLevel(id);
     }
 
     public Cell[][] getCells() {
