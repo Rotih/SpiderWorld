@@ -7,6 +7,7 @@ public class Game extends JFrame implements ActionListener {
     private WorldPanel worldPanel;
     private WorkAreaPanel workAreaPanel;
     private ToolBoxPanel toolBox;
+
     public Game() {
         JFrame frame = new JFrame("SpiderWorld");
         frame.setLayout(new GridBagLayout());
@@ -14,10 +15,8 @@ public class Game extends JFrame implements ActionListener {
         // Create the main panels
         JPanel northPanel = createPanel(Color.black);
         northPanel.setLayout(new FlowLayout());
-        //JPanel westPanel = createPanel(Color.lightGray);
-        //JPanel eastPanel = createPanel(Color.lightGray);
         workAreaPanel = new WorkAreaPanel();
-        worldPanel = new WorldPanel();
+        worldPanel = new WorldPanel(1);
         toolBox = new ToolBoxPanel();
 
         JButton createTurn = new JButton("New Turn Block");
@@ -48,6 +47,10 @@ public class Game extends JFrame implements ActionListener {
         paintGreen.addActionListener(this);
         JButton levelone = new JButton("1");
         JButton leveltwo = new JButton("2");
+        JButton levelthree = new JButton("3");
+        levelone.addActionListener(this);
+        leveltwo.addActionListener(this);
+        levelthree.addActionListener(this);
 
         // Add the main panels to the frame with GridBagLayout
         GridBagConstraints gbc = new GridBagConstraints();
@@ -66,6 +69,7 @@ public class Game extends JFrame implements ActionListener {
         northPanel.add(paintGreen);
         northPanel.add(levelone);
         northPanel.add(leveltwo);
+        northPanel.add(levelthree);
 
         gbc.gridy = 1;
         gbc.weightx = 0.4; // (40% of the width)
@@ -113,6 +117,20 @@ public class Game extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
+    private void switchLevel(int newLevelId)
+    {
+        worldPanel.setPreferredSize(new Dimension(500, 700));
+            workAreaPanel.repaint();
+            workAreaPanel.revalidate();
+
+            worldPanel.setLevel(newLevelId);
+            worldPanel.repaint();
+            worldPanel.revalidate();
+
+        DataSource.getInstance().resetConnectedBlocks();
+
+    }
+
     private static JPanel createPanel(Color color) {
         JPanel panel = new JPanel();
         panel.setBackground(color);
@@ -121,8 +139,12 @@ public class Game extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
+        // called once to create DataSource
+        DataSource.getInstance();
+
         Game spiderWorld = new Game();
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -143,7 +165,6 @@ public class Game extends JFrame implements ActionListener {
             }
             else if (button.getText().equals("Turn")) {
                 //run blocks
-                System.out.println("turned");
                 worldPanel.runSeparately(button.getText());
                 repaint();
                 world = true;
@@ -182,6 +203,17 @@ public class Game extends JFrame implements ActionListener {
             } else if (button.getText().equals("New Paint Green Block")) {
                 workAreaPanel.add(new DraggableBlockDecorator(new PaintBlock("paint green"), 85, 25));
                 work = true;
+            } else if (button.getText().equals("1"))
+            {
+                switchLevel(1);
+            }
+             else if (button.getText().equals("2"))
+            {
+                switchLevel(2);
+            }
+             else if (button.getText().equals("3"))
+            {
+                switchLevel(3);
             }
             worldPanel.setPreferredSize(new Dimension(500, 700));
             if (work == true) {
@@ -192,7 +224,7 @@ public class Game extends JFrame implements ActionListener {
                 worldPanel.repaint();
                 worldPanel.revalidate();
             }
-            DataSource.getInstance().resetConnectedBlocks();
+
         }
     }
 }
