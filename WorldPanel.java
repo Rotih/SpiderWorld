@@ -48,56 +48,55 @@ public class WorldPanel extends JPanel implements MouseListener {
             }
             block.add(paint);
         }
-        for (Block b: block){
-            if (b.getType().equals("turn")){
-                w.spider.turn();
-            }
-            else if (b.getType().equals("step")){
-                int newRow = w.spider.row;
-                int newCol = w.spider.col;
-                if (w.spider.dir == 0){
-                    newRow--;
-                }
-                else if (w.spider.dir == 1){
-                    newCol++;
-                }
-                else if (w.spider.dir == 2){
-                    newRow++;
-                }
-                else{
-                    newCol--;
-                }
-                if (newRow <0 || newCol < 00 || newRow >= w.cells.length || newCol >= w.cells[0].length){
-                    // spider out of bounds
-                    //possible pop up box
-                    String message = "The Spider cannot move there. It's out of bounds.";
-                    JOptionPane.showMessageDialog(null, message, "Spider Out of Bounds", JOptionPane.WARNING_MESSAGE);
-                    break;
-                }
-                else{
-                    w.cells[w.spider.row][w.spider.col].spider = null;
-                    w.spider.move();
-                    w.cells[w.spider.row][w.spider.col].spider = w.spider;
-                }
-            }
-            else if (b.getType().startsWith("paint")){
-                String [] words = b.getType().split("\\s+");
-                w.cells[w.spider.row][w.spider.col].setColor(words[1]);
-            }
-            repaint();
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        check();
+        run(block);
     }
 
 
     public void run() {
         ArrayList<Block> currBlocks = DataSource.getInstance().getConnectedBlocks();
-        for (Block block: currBlocks){
+        run(currBlocks);
+
+    }
+
+    public boolean check(){
+        boolean success = true;
+        for (int row = 0; row < w.cells.length && success; row++){
+            for (int col = 0; col < w.cells[row].length && success; col++){
+                if (w.cells[row][col].aDiamond == Cell.Diamond.DEFAULT){
+                    if (!w.cells[row][col].color.equals("black")){
+                        success = false;
+                    }
+                }
+                else{
+                    if (w.cells[row][col].aDiamond == Cell.Diamond.BLUE) {
+                        if (!w.cells[row][col].color.equals("blue")) {
+                            success = false;
+                        }
+                    }
+                    else if (w.cells[row][col].aDiamond == Cell.Diamond.RED) {
+                        if (!w.cells[row][col].color.equals("red")) {
+                            success = false;
+                        }
+                    }
+                    else if (w.cells[row][col].aDiamond == Cell.Diamond.GREEN) {
+                        if (!w.cells[row][col].color.equals("green")) {
+                            success = false;
+                        }
+                    }
+                }
+            }
+        }
+        if (success){
+            //pop for success
+            String message = "CONGRATULATIONS!!! You Completed Level " + w.level;
+            JOptionPane.showMessageDialog(null, message, "You are now ready for Level " + (w.level + 1), JOptionPane.PLAIN_MESSAGE);
+            w.level = w.level + 1;
+        }
+        return success;
+    }
+
+    public void run(ArrayList<Block> blocks) {
+        for (Block block: blocks){
             if (block.getType().equals("turn")){
                 w.spider.turn();
             }
@@ -137,42 +136,6 @@ public class WorldPanel extends JPanel implements MouseListener {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-        }
-        check();
-    }
-
-    public void check(){
-        boolean success = true;
-        for (int row = 0; row < w.cells.length && success; row++){
-            for (int col = 0; col < w.cells[row].length && success; col++){
-                if (w.cells[row][col].aDiamond == Cell.Diamond.DEFAULT){
-                    if (!w.cells[row][col].color.equals("black")){
-                        success = false;
-                    }
-                }
-                else{
-                    if (w.cells[row][col].aDiamond == Cell.Diamond.BLUE) {
-                        if (!w.cells[row][col].color.equals("blue")) {
-                            success = false;
-                        }
-                    }
-                    else if (w.cells[row][col].aDiamond == Cell.Diamond.RED) {
-                        if (!w.cells[row][col].color.equals("red")) {
-                            success = false;
-                        }
-                    }
-                    else if (w.cells[row][col].aDiamond == Cell.Diamond.GREEN) {
-                        if (!w.cells[row][col].color.equals("green")) {
-                            success = false;
-                        }
-                    }
-                }
-            }
-        }
-        if (success){
-            //pop for success
-            String message = "CONGRATULATIONS!!! You Completed Level " + w.level;
-            JOptionPane.showMessageDialog(null, message, "You are now ready for Level " + (w.level + 1), JOptionPane.PLAIN_MESSAGE);
         }
     }
 

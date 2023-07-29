@@ -117,7 +117,7 @@ public class Game extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
-    private void switchLevel(int newLevelId)
+    public void switchLevel(int newLevelId)
     {
         worldPanel.setPreferredSize(new Dimension(500, 700));
             workAreaPanel.repaint();
@@ -145,6 +145,12 @@ public class Game extends JFrame implements ActionListener {
         Game spiderWorld = new Game();
     }
 
+    public void checkLevel() {
+        boolean finished = worldPanel.check();
+        if (finished) {
+            switchLevel(worldPanel.getWorld().level + 1);
+        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -155,11 +161,13 @@ public class Game extends JFrame implements ActionListener {
             if (button.getText().equals("Run")) {
                 //run blocks
                 worldPanel.run();
+                checkLevel();
                 world = true;
             }
             else if (button.getText().equals("Step")) {
                 //run blocks
                 worldPanel.runSeparately(button.getText());
+                checkLevel();
                 repaint();
                 world = true;
             }
@@ -172,18 +180,21 @@ public class Game extends JFrame implements ActionListener {
             else if (button.getText().equals("Red")) {
                 //run blocks
                 worldPanel.runSeparately(button.getText());
+                checkLevel();
                 repaint();
                 world = true;
             }
             else if (button.getText().equals("Blue")) {
                 //run blocks
                 worldPanel.runSeparately(button.getText());
+                checkLevel();
                 repaint();
                 world = true;
             }
             else if (button.getText().equals("Green")) {
                 //run blocks
                 worldPanel.runSeparately(button.getText());
+                checkLevel();
                 repaint();
                 world = true;
             }
