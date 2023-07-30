@@ -2,15 +2,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+
 public class DraggableBlockDecorator extends Block {
-    private Block decoratedBlock;
+
     private int offsetX;
     private int offsetY;
     private boolean dragging;
 
+
     public DraggableBlockDecorator(Block decoratedBlock, int width, int height) {
         super(decoratedBlock.getType(),width, height);
-        this.decoratedBlock = decoratedBlock;
+
+
         setLayout(new BorderLayout());
         add(decoratedBlock);
         addMouseListener(new MouseAdapter() {
@@ -25,7 +28,18 @@ public class DraggableBlockDecorator extends Block {
             public void mouseReleased(MouseEvent e) {
                 dragging = false;
                 snapToOtherBlock();
+                Point blockPosition = new Point(getX(), getY());
+                if (decoratedBlock.getBounds().contains(e.getPoint())) {
+                    System.out.println(blockPosition);
+
+                    if (blockPosition.x <= 50 && blockPosition.y >= 500) {
+                        removeBlock();
+                    }
+                }
             }
+
+
+
         });
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
@@ -47,7 +61,7 @@ public class DraggableBlockDecorator extends Block {
 
                 int thisBottom = getY() + getHeight();
                 int otherBottom = otherBlock.getY() + otherBlock.getHeight();
-                int snapThreshold = 10; // Adjust this value as needed for snapping sensitivity
+                int snapThreshold = 20;
 
                 if (Math.abs(thisBottom - otherBlock.getY()) < snapThreshold) {
                     setLocation(getX(), otherBlock.getY() - getHeight());
@@ -71,15 +85,12 @@ public class DraggableBlockDecorator extends Block {
             DataSource.getInstance().getConnectedBlocks().remove(this);
         }
 
-        // System.out.println("Connected Blocks:");
-        // for (Block block : DataSource.getInstance().getConnectedBlocks()) {
-        //     System.out.println(block.getType());
-        // }
+        System.out.println("Connected Blocks:");
+        for (Block block : DataSource.getInstance().getConnectedBlocks()) {
+            System.out.println(block.getType());
+
+
+        }
     }
 
-
-    @Override
-    public void draw() {
-
-    }
 }
