@@ -25,7 +25,7 @@ public class WorkAreaPanel extends JPanel implements MouseListener, ActionListen
     Color PaintCustom = new Color(199, 125, 72);
 
     public WorkAreaPanel() {
-        setLayout(null); 
+        setLayout(null); // Set the layout manager to null for absolute positioning
         setBackground(Color.WHITE);
 
         connectHere = new DraggableBlockDecorator(new MoveBlock("Connect Here"), 150, 25);
@@ -43,7 +43,7 @@ public class WorkAreaPanel extends JPanel implements MouseListener, ActionListen
         setPreferredSize(new Dimension(800, 600));
 
         TrashCan trashCan = new TrashCan("src/images/trash.png");
-        trashCan.setBounds(15, 505, 100, 100); 
+        trashCan.setBounds(15, 505, 100, 100); // Adjust the position and size as needed
         add(trashCan);
 
         // Add the WorkAreaPanel as a MouseListener to each button
@@ -72,10 +72,10 @@ public class WorkAreaPanel extends JPanel implements MouseListener, ActionListen
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-
+        // Calculate the width of the rectangle to cover 30% of the WorkAreaPanel
         int rectWidth = getWidth() * 30 / 100;
         int rectHeight = getHeight();
-        int rectX = getWidth() - rectWidth;
+        int rectX = getWidth() - rectWidth; // Calculate the starting X position on the right side
 
         // Draw a gray rectangle on the right side
         g.setColor(Color.LIGHT_GRAY);
@@ -110,37 +110,37 @@ public class WorkAreaPanel extends JPanel implements MouseListener, ActionListen
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == step) {
             Block newStepBlock = new DraggableBlockDecorator(new MoveBlock("step"), 85, 15);
-            newStepBlock.setBounds(425, 570, 85, 25);
+            newStepBlock.setBounds(470, 570, 85, 25);
             this.add(newStepBlock);
             this.revalidate();
             this.repaint();
         } else if (e.getSource() == turn) {
             Block newBlock = new DraggableBlockDecorator(new MoveBlock("turn"), 85, 15);
-            newBlock.setBounds(300, 500, 85, 25);
+            newBlock.setBounds(470, 570, 85, 25);
             this.add(newBlock);
             this.revalidate();
             this.repaint();
         } else if (e.getSource() == black) {
             Block pBlack = new DraggableBlockDecorator(new MoveBlock("paint black"), 85, 15);
-            pBlack.setBounds(300, 500, 85, 25);
+            pBlack.setBounds(470, 570, 85, 25);
             this.add(pBlack);
             this.revalidate();
             this.repaint();
         } else if (e.getSource() == blue) {
             Block pBlue = new DraggableBlockDecorator(new MoveBlock("paint blue"), 85, 15);
-            pBlue.setBounds(300, 500, 85, 25);
+            pBlue.setBounds(470, 570, 85, 25);
             this.add(pBlue);
             this.revalidate();
             this.repaint();
         } else if (e.getSource() == green) {
             Block pGreen = new DraggableBlockDecorator(new MoveBlock("paint green"), 85, 15);
-            pGreen.setBounds(300, 500, 85, 25);
+            pGreen.setBounds(470, 570, 85, 25);
             this.add(pGreen);
             this.revalidate();
             this.repaint();
         } else if (e.getSource() == red) {
             Block pRed = new DraggableBlockDecorator(new MoveBlock("paint red"), 85, 10);
-            pRed.setBounds(300, 500, 85, 25);
+            pRed.setBounds(470, 570, 85, 25);
             this.add(pRed);
             this.revalidate();
             this.repaint();
