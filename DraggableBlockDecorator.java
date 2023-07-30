@@ -30,8 +30,6 @@ public class DraggableBlockDecorator extends Block {
                 snapToOtherBlock();
                 Point blockPosition = new Point(getX(), getY());
                 if (decoratedBlock.getBounds().contains(e.getPoint())) {
-                    System.out.println(blockPosition);
-
                     if (blockPosition.x <= 50 && blockPosition.y >= 500) {
                         removeBlock();
                     }
@@ -83,13 +81,6 @@ public class DraggableBlockDecorator extends Block {
 
         if (!snapped) {
             DataSource.getInstance().getConnectedBlocks().remove(this);
-        }
-
-        System.out.println("Connected Blocks:");
-        for (Block block : DataSource.getInstance().getConnectedBlocks()) {
-            System.out.println(block.getType());
-
-
         }
     }
 
