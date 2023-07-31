@@ -112,9 +112,21 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
             }
         }
         if (success){
+
+            String title;
+
+            if (DataSource.getInstance().getNumLevels() > w.level)
+            {
+                title = "You are now ready for Level " + (w.level + 1);
+            }
+            else
+            {
+                title = "You have completed the final level!";
+            }
+
             //pop for success
             String message = "CONGRATULATIONS!!! You Completed Level " + w.level;
-            JOptionPane.showMessageDialog(null, message, "You are now ready for Level " + (w.level + 1), JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, message, title, JOptionPane.PLAIN_MESSAGE);
         }
         return success;
     }

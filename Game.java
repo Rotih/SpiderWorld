@@ -25,8 +25,6 @@ public class Game extends JFrame implements ActionListener {
         JButton paintBlue = new JButton("Blue");
         JButton paintGreen = new JButton("Green");
 
-
-
         runButton.addActionListener(this);
         stepButton.addActionListener(this);
         turnButton.addActionListener(this);
@@ -36,9 +34,17 @@ public class Game extends JFrame implements ActionListener {
         JButton levelone = new JButton("1");
         JButton leveltwo = new JButton("2");
         JButton levelthree = new JButton("3");
+        JButton levelfour = new JButton("4");
+        JButton levelfive = new JButton("5");
+        JButton levelsix = new JButton("6");
+        JButton levelseven = new JButton("7");
         levelone.addActionListener(this);
         leveltwo.addActionListener(this);
         levelthree.addActionListener(this);
+        levelfour.addActionListener(this);
+        levelfive.addActionListener(this);
+        levelsix.addActionListener(this);
+        levelseven.addActionListener(this);
 
         // Add the main panels to the frame with GridBagLayout
         GridBagConstraints gbc = new GridBagConstraints();
@@ -58,6 +64,10 @@ public class Game extends JFrame implements ActionListener {
         northPanel.add(levelone);
         northPanel.add(leveltwo);
         northPanel.add(levelthree);
+        northPanel.add(levelfour);
+        northPanel.add(levelfive);
+        northPanel.add(levelsix);
+        northPanel.add(levelseven);
 
         gbc.gridy = 1;
         gbc.weightx = 0.4; // (40% of the width)
@@ -178,18 +188,11 @@ public class Game extends JFrame implements ActionListener {
                 checkLevel();
                 repaint();
                 world = true;
-            } else if (button.getText().equals("1"))
+            } else
             {
-                switchLevel(1);
+                switchLevel(Integer.parseInt(button.getText()));
             }
-             else if (button.getText().equals("2"))
-            {
-                switchLevel(2);
-            }
-             else if (button.getText().equals("3"))
-            {
-                switchLevel(3);
-            }
+
             worldPanel.setPreferredSize(new Dimension(500, 700));
             if (world) {
                 worldPanel.repaint();
