@@ -39,7 +39,7 @@ public class WorkAreaPanel extends JPanel implements MouseListener, ActionListen
         setPreferredSize(new Dimension(800, 600));
 
         TrashCan trashCan = new TrashCan("images/trash.png");
-        trashCan.setBounds(15, 505, 100, 100); // Adjust the position and size as needed
+        trashCan.setBounds(15, 625, 100, 100);
         add(trashCan);
 
         // Add the WorkAreaPanel as a MouseListener to each button
@@ -71,7 +71,7 @@ public class WorkAreaPanel extends JPanel implements MouseListener, ActionListen
         // Calculate the width of the rectangle to cover 30% of the WorkAreaPanel
         int rectWidth = getWidth() * 30 / 100;
         int rectHeight = getHeight();
-        int rectX = getWidth() - rectWidth; // Calculate the starting X position on the right side
+        int rectX = getWidth() - rectWidth;
 
         // Draw a gray rectangle on the right side
         g.setColor(Color.LIGHT_GRAY);
