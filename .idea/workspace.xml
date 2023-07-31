@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66b5ffac-4dd0-4e3b-8cb1-4aaad70a5d59" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/WorldPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/ToolBoxPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/WorldPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/WorldPanel.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

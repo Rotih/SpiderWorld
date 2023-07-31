@@ -1,15 +1,40 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
 
-public class WorldPanel extends JPanel implements MouseListener {
+public class WorldPanel extends JPanel implements MouseListener, ActionListener {
 
     public World w;
+    private JButton reset;
+    private JSlider speed;
     public WorldPanel(int levelId) {
+        setLayout(null);
+        reset = createButton("Reset", 100, 600, 85, 25, Color.BLACK);
+        speed = new JSlider(JSlider.HORIZONTAL, 0, 3000, 1500);
+        this.add(reset);
+        this.add(speed);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         w = new World(levelId, 2, 2);
+        reset.addActionListener(this);
+        revalidate();
+        repaint();
+    }
+
+    private JButton createButton(String text, int x, int y, int width, int height, Color color) {
+        JButton button = new JButton(text);
+        button.setBounds(x, y, width, height);
+        button.setBackground(color);
+        button.setForeground(Color.WHITE);
+        button.setFocusPainted(false);
+        button.setBorderPainted(false);
+        button.setOpaque(true);
+        button.addActionListener(this);
+        this.add(button);
+        return button;
     }
 
     public void setLevel(int levelId)
@@ -164,6 +189,11 @@ public class WorldPanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
     }
 }
