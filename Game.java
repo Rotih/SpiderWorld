@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 public class Game extends JFrame implements ActionListener {
     private WorldPanel worldPanel;
     private WorkAreaPanel workAreaPanel;
-    private ToolBoxPanel toolBox;
 
     public Game() {
         JFrame frame = new JFrame("SpiderWorld");
@@ -18,7 +17,6 @@ public class Game extends JFrame implements ActionListener {
         northPanel.setLayout(new FlowLayout());
         workAreaPanel = new WorkAreaPanel();
         worldPanel = new WorldPanel(1);
-        toolBox = new ToolBoxPanel();
 
         JButton runButton = new JButton("Run");
         JButton stepButton = new JButton("Step");
@@ -92,7 +90,6 @@ public class Game extends JFrame implements ActionListener {
         eastGbc.weightx = 0.10;
         eastGbc.weighty = 1.0;
         eastGbc.fill = GridBagConstraints.BOTH;
-        westEastContainer.add(toolBox, eastGbc);
 
         // Set the default window size
         worldPanel.setPreferredSize(new Dimension(500, 700));
@@ -195,11 +192,7 @@ public class Game extends JFrame implements ActionListener {
                 switchLevel(3);
             }
             worldPanel.setPreferredSize(new Dimension(500, 700));
-            if (work == true) {
-                workAreaPanel.repaint();
-                workAreaPanel.revalidate();
-            }
-            if (world == true) {
+            if (world) {
                 worldPanel.repaint();
                 worldPanel.revalidate();
             }
