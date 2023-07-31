@@ -108,8 +108,7 @@ public class Game extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
-    public void switchLevel(int newLevelId)
-    {
+    public void switchLevel(int newLevelId) {
 
         worldPanel.setPreferredSize(new Dimension(500, 700));
         workAreaPanel.repaint();
@@ -154,42 +153,36 @@ public class Game extends JFrame implements ActionListener {
                 worldPanel.run();
                 checkLevel();
                 world = true;
-            }
-            else if (button.getText().equals("Step")) {
+            } else if (button.getText().equals("Step")) {
                 //run blocks
                 worldPanel.runSeparately(button.getText());
                 checkLevel();
                 repaint();
                 world = true;
-            }
-            else if (button.getText().equals("Turn")) {
+            } else if (button.getText().equals("Turn")) {
                 //run blocks
                 worldPanel.runSeparately(button.getText());
                 repaint();
                 world = true;
-            }
-            else if (button.getText().equals("Red")) {
-                //run blocks
-                worldPanel.runSeparately(button.getText());
-                checkLevel();
-                repaint();
-                world = true;
-            }
-            else if (button.getText().equals("Blue")) {
+            } else if (button.getText().equals("Red")) {
                 //run blocks
                 worldPanel.runSeparately(button.getText());
                 checkLevel();
                 repaint();
                 world = true;
-            }
-            else if (button.getText().equals("Green")) {
+            } else if (button.getText().equals("Blue")) {
                 //run blocks
                 worldPanel.runSeparately(button.getText());
                 checkLevel();
                 repaint();
                 world = true;
-            } else
-            {
+            } else if (button.getText().equals("Green")) {
+                //run blocks
+                worldPanel.runSeparately(button.getText());
+                checkLevel();
+                repaint();
+                world = true;
+            } else {
                 switchLevel(Integer.parseInt(button.getText()));
             }
 
