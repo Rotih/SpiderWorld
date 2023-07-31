@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66b5ffac-4dd0-4e3b-8cb1-4aaad70a5d59" name="Changes" comment="" />
+    <list default="true" id="66b5ffac-4dd0-4e3b-8cb1-4aaad70a5d59" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PaintBlock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorkAreaPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/WorkAreaPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorldPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/WorldPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/Block.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/DraggableBlockDecorator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/DraggableBlockDecorator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/DraggableBlockDecorator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/DraggableBlockDecorator$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/DraggableBlockDecorator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/DraggableBlockDecorator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/MoveBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/MoveBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/PaintBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/ToolBoxPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/ToolBoxPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/WorkAreaPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/WorkAreaPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/WorldPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SpiderWorld307/WorldPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/images/spider_east.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/images/spider_north.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/images/spider_south.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpiderWorld307/images/spider_west.png" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +52,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/rohit/Desktop/Random/SpiderWorld308&quot;
+    &quot;last_opened_file_path&quot;: &quot;/Users/rohit/Desktop/SpiderWorld309&quot;
   }
 }</component>
   <component name="RunManager">

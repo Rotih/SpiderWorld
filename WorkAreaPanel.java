@@ -1,13 +1,9 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.IOException;
-
 
 
 public class WorkAreaPanel extends JPanel implements MouseListener, ActionListener {
@@ -42,7 +38,7 @@ public class WorkAreaPanel extends JPanel implements MouseListener, ActionListen
 
         setPreferredSize(new Dimension(800, 600));
 
-        TrashCan trashCan = new TrashCan("src/images/trash.png");
+        TrashCan trashCan = new TrashCan("images/trash.png");
         trashCan.setBounds(15, 505, 100, 100); // Adjust the position and size as needed
         add(trashCan);
 

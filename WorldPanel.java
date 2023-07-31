@@ -32,19 +32,19 @@ public class WorldPanel extends JPanel implements MouseListener {
     public void runSeparately(String instruction) {
         ArrayList<Block> block = new ArrayList<Block>();
         if (instruction.equals("Turn")) {
-            MoveBlock turning = new MoveBlock("turn", 85, 25);
+            MoveBlock turning = new MoveBlock("turn");
             block.add(turning);
         } else if (instruction.equals("Step")) {
-            MoveBlock stepping = new MoveBlock("step", 85, 25);
+            MoveBlock stepping = new MoveBlock("step");
             block.add(stepping);
         } else if (instruction.equals("Red") || instruction.equals("Blue") || instruction.equals("Green")) {
-            PaintBlock paint;
+            MoveBlock paint;
             if (instruction.equals("Red")) {
-                paint = new PaintBlock("paint red");
+                paint = new MoveBlock("paint red");
             } else if (instruction.equals("Blue")) {
-                paint = new PaintBlock("paint blue");
+                paint = new MoveBlock("paint blue");
             } else {
-                paint = new PaintBlock("paint green");
+                paint = new MoveBlock("paint green");
             }
             block.add(paint);
         }

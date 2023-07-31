@@ -10,6 +10,7 @@ public class Game extends JFrame implements ActionListener {
 
     public Game() {
         JFrame frame = new JFrame("SpiderWorld");
+        frame.setResizable(false);
         frame.setLayout(new GridBagLayout());
 
         // Create the main panels
@@ -19,12 +20,6 @@ public class Game extends JFrame implements ActionListener {
         worldPanel = new WorldPanel(1);
         toolBox = new ToolBoxPanel();
 
-        JButton createTurn = new JButton("New Turn Block");
-        JButton createStep = new JButton("New Step Block");
-        JButton createRed = new JButton("New Paint Red Block");
-        JButton createBlue = new JButton("New Paint Blue Block");
-        JButton createGreen = new JButton("New Paint Green Block");
-
         JButton runButton = new JButton("Run");
         JButton stepButton = new JButton("Step");
         JButton turnButton = new JButton("Turn");
@@ -33,11 +28,6 @@ public class Game extends JFrame implements ActionListener {
         JButton paintGreen = new JButton("Green");
 
 
-        createTurn.addActionListener(this);
-        createStep.addActionListener(this);
-        createRed.addActionListener(this);
-        createBlue.addActionListener(this);
-        createGreen.addActionListener(this);
 
         runButton.addActionListener(this);
         stepButton.addActionListener(this);
@@ -103,11 +93,6 @@ public class Game extends JFrame implements ActionListener {
         eastGbc.weighty = 1.0;
         eastGbc.fill = GridBagConstraints.BOTH;
         westEastContainer.add(toolBox, eastGbc);
-        toolBox.add(createTurn);
-        toolBox.add(createStep);
-        toolBox.add(createRed);
-        toolBox.add(createBlue);
-        toolBox.add(createGreen);
 
         // Set the default window size
         worldPanel.setPreferredSize(new Dimension(500, 700));
@@ -197,23 +182,6 @@ public class Game extends JFrame implements ActionListener {
                 checkLevel();
                 repaint();
                 world = true;
-            }
-            else if (button.getText().equals("New Turn Block")) {
-                System.out.println("clicked");
-                workAreaPanel.add(new DraggableBlockDecorator(new MoveBlock("turn", 85, 25), 85, 25));
-                work = true;
-            } else if (button.getText().equals("New Step Block")) {
-                workAreaPanel.add(new DraggableBlockDecorator(new MoveBlock("step", 85, 25), 85, 25));
-                work = true;
-            } else if (button.getText().equals("New Paint Red Block")) {
-                workAreaPanel.add(new DraggableBlockDecorator(new PaintBlock("paint red"), 85, 25));
-                work = true;
-            } else if (button.getText().equals("New Paint Blue Block")) {
-                workAreaPanel.add(new DraggableBlockDecorator(new PaintBlock("paint blue"), 85, 25));
-                work = true;
-            } else if (button.getText().equals("New Paint Green Block")) {
-                workAreaPanel.add(new DraggableBlockDecorator(new PaintBlock("paint green"), 85, 25));
-                work = true;
             } else if (button.getText().equals("1"))
             {
                 switchLevel(1);
