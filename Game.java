@@ -100,13 +100,14 @@ public class Game extends JFrame implements ActionListener {
 
     public void switchLevel(int newLevelId)
     {
-        worldPanel.setPreferredSize(new Dimension(500, 700));
-            workAreaPanel.repaint();
-            workAreaPanel.revalidate();
 
-            worldPanel.setLevel(newLevelId);
-            worldPanel.repaint();
-            worldPanel.revalidate();
+        worldPanel.setPreferredSize(new Dimension(500, 700));
+        workAreaPanel.repaint();
+        workAreaPanel.revalidate();
+
+        worldPanel.setLevel(newLevelId);
+        worldPanel.repaint();
+        worldPanel.revalidate();
 
         DataSource.getInstance().resetConnectedBlocks();
 
@@ -126,7 +127,9 @@ public class Game extends JFrame implements ActionListener {
     public void checkLevel() {
         boolean finished = worldPanel.check();
         if (finished) {
-            switchLevel(worldPanel.getWorld().level + 1);
+
+            if (DataSource.getInstance().getNumLevels() > worldPanel.getWorld().level)
+                switchLevel(worldPanel.getWorld().level + 1);
         }
     }
 

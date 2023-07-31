@@ -112,4 +112,6 @@ public class DataSource extends Observable
 		return connectedBlocks;
 	}
 
+	public int getNumLevels() { return levels.size(); }
+
 }
