@@ -30,7 +30,7 @@ public class DraggableBlockDecorator extends Block {
                 snapToOtherBlock();
                 Point blockPosition = new Point(getX(), getY());
                 if (decoratedBlock.getBounds().contains(e.getPoint())) {
-                    if (blockPosition.x <= 50 && blockPosition.y >= 500) {
+                    if (blockPosition.x <= 50 && blockPosition.y >= 600) {
                         removeBlock();
                     }
                 }
