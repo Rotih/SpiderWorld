@@ -1,2 +1,2 @@
-RR
-RS
+BG
+SR
