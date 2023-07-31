@@ -90,7 +90,6 @@ public class WorldPanel extends JPanel implements MouseListener {
             //pop for success
             String message = "CONGRATULATIONS!!! You Completed Level " + w.level;
             JOptionPane.showMessageDialog(null, message, "You are now ready for Level " + (w.level + 1), JOptionPane.PLAIN_MESSAGE);
-            w.level = w.level + 1;
         }
         return success;
     }
