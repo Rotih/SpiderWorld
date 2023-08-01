@@ -12,7 +12,6 @@ public class Game extends JFrame implements ActionListener {
         frame.setResizable(false);
         frame.setLayout(new GridBagLayout());
 
-        // Create the main panels
         JPanel northPanel = createPanel(Color.black);
         northPanel.setLayout(new FlowLayout());
         workAreaPanel = new WorkAreaPanel();
@@ -39,7 +38,6 @@ public class Game extends JFrame implements ActionListener {
         levelsix.addActionListener(this);
         levelseven.addActionListener(this);
 
-        // Add the main panels to the frame with GridBagLayout
         GridBagConstraints gbc = new GridBagConstraints();
 
         gbc.gridx = 0;
@@ -62,10 +60,8 @@ public class Game extends JFrame implements ActionListener {
         gbc.weightx = 0.4; // (40% of the width)
         gbc.weighty = 0.6; // Adjust the weighty value to make the westEastContainer taller
 
-
         JPanel westEastContainer = new JPanel(new GridBagLayout());
         frame.add(westEastContainer, gbc);
-
 
         GridBagConstraints westGbc = new GridBagConstraints();
         westGbc.gridx = 0;
@@ -90,7 +86,6 @@ public class Game extends JFrame implements ActionListener {
         eastGbc.weighty = 1.0;
         eastGbc.fill = GridBagConstraints.BOTH;
 
-        // Set the default window size
         worldPanel.setPreferredSize(new Dimension(500, 700));
         frame.setPreferredSize(new Dimension(1400, 800));
         frame.pack();
@@ -98,14 +93,11 @@ public class Game extends JFrame implements ActionListener {
     }
 
     public void switchLevel(int newLevelId) {
-
         worldPanel.setPreferredSize(new Dimension(500, 700));
         workAreaPanel.resetWorkAreaPanel();
-
         worldPanel.setLevel(newLevelId);
         worldPanel.repaint();
         worldPanel.revalidate();
-
         DataSource.getInstance().resetConnectedBlocks();
     }
 

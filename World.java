@@ -7,7 +7,6 @@ public class World extends JFrame {
     public Spider spider;
     public DataSource dataSource;
 
-    // public Levels levels;
     public World(int levelId, int width, int height){
         this.level = levelId;
 

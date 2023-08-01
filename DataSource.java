@@ -2,12 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class DataSource extends Observable {
-
-    // class setup
     private static DataSource _instance;
     private int[][] spiderInit = {{0, 0}, {1, 1}, {3, 1}, {4, 4}, {1, 1}, {4, 0}};
-
-    // constructor (private for singleton)
     private DataSource() {
         resetConnectedBlocks();
 
@@ -15,14 +11,12 @@ public class DataSource extends Observable {
         importLevels();
     }
 
-    // for singleton
     public static DataSource getInstance() {
         if (_instance == null) _instance = new DataSource();
 
         return _instance;
     }
 
-    // Levels
     private ArrayList<Level> levels;
 
     public Level getLevel(int id) {
@@ -35,15 +29,11 @@ public class DataSource extends Observable {
 
     private void importLevels() {
         levels = new ArrayList<Level>();
-
         File folder = new File("levels/");
         File[] levelFiles = folder.listFiles();
-
         Arrays.sort(levelFiles, Comparator.comparingInt(DataSource::extractLevelNum));
-
         for (File level : levelFiles) {
             if (level.isFile()) {
-
                 try {
                     levels.add(parseFile(level));
                 } catch (IOException e) {
@@ -60,16 +50,13 @@ public class DataSource extends Observable {
     }
 
     private Level parseFile(File level) throws IOException {
-        // create identifier
         String levelName = level.getName().substring(0, level.getName().lastIndexOf('.'));
         int id = Integer.parseInt(levelName);
 
-        // find n size of cells
         BufferedReader reader = new BufferedReader(new FileReader(level));
         int n = reader.readLine().length();
         reader.close();
 
-        // parse raw text for cell information
         Cell[][] cells = new Cell[n][n];
         reader = new BufferedReader(new FileReader(level));
 
@@ -83,8 +70,6 @@ public class DataSource extends Observable {
             }
 
             for (int col = 0; col < n; col++) {
-                // the only non-accounted for scenario is a diamond and spider being in the same cell
-
                 Cell newCell = switch (chars[col]) {
                     case 'R' -> new Cell(cellId, Cell.Diamond.RED, false, row, col);
                     case 'G' -> new Cell(cellId, Cell.Diamond.GREEN, false, row, col);
@@ -97,7 +82,6 @@ public class DataSource extends Observable {
                 cellId++;
             }
         }
-
         return new Level(id, cells);
     }
 
@@ -179,5 +163,4 @@ public class DataSource extends Observable {
     public int getNumLevels() {
         return levels.size();
     }
-
 }
