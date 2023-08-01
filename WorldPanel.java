@@ -9,17 +9,20 @@ import java.util.*;
 public class WorldPanel extends JPanel implements MouseListener, ActionListener {
 
     public World w;
-    private JButton reset;
+    private int sevenX;
+    private int sevenY;
+
     private JSlider speed;
     public WorldPanel(int levelId) {
         setLayout(null);
-        reset = createButton("Reset", 100, 600, 85, 25, Color.BLACK);
         speed = new JSlider(JSlider.HORIZONTAL, 0, 3000, 1500);
-        this.add(reset);
         this.add(speed);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         w = new World(levelId, 2, 2);
-        reset.addActionListener(this);
+        if (levelId == 7) {
+            sevenX = w.spider.row;
+            sevenY = w.spider.col;
+        }
         revalidate();
         repaint();
     }
@@ -42,6 +45,25 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
         w = new World(levelId, 2, 2);
     }
 
+    public void reset() {
+        if (w.level != 7) {
+            for (int row = 0; row < w.cells.length; row++) {
+                for (int col = 0; col < w.cells[row].length; col++) {
+                    w.cells[row][col].setColor("black");
+                }
+            }
+            int initX = DataSource.getInstance().getSpiderInit()[w.level - 1][0];
+            int initY = DataSource.getInstance().getSpiderInit()[w.level - 1][1];
+            w.cells[w.spider.row][w.spider.col].spider = null;
+            w.spider.resetPos(initX, initY);
+            w.cells[initX][initY].spider = w.spider;
+            System.out.print(w.spider.dir);
+        } else {
+            w.cells[w.spider.row][w.spider.col].spider = null;
+            w.spider.resetPos(sevenY, sevenX);
+            w.cells[sevenX][sevenY].spider = w.spider;
+        }
+    }
     public World getWorld() {
         return w;
     }

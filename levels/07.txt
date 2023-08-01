@@ -1,2 +1,3 @@
-BG
-SR
+DGD
+SBD
+RDD

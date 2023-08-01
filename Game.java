@@ -19,18 +19,11 @@ public class Game extends JFrame implements ActionListener {
         worldPanel = new WorldPanel(1);
 
         JButton runButton = new JButton("Run");
-        JButton stepButton = new JButton("Step");
-        JButton turnButton = new JButton("Turn");
-        JButton paintRed = new JButton("Red");
-        JButton paintBlue = new JButton("Blue");
-        JButton paintGreen = new JButton("Green");
+        JButton reset = new JButton("Reset");
 
         runButton.addActionListener(this);
-        stepButton.addActionListener(this);
-        turnButton.addActionListener(this);
-        paintRed.addActionListener(this);
-        paintBlue.addActionListener(this);
-        paintGreen.addActionListener(this);
+        reset.addActionListener(this);
+
         JButton levelone = new JButton("1");
         JButton leveltwo = new JButton("2");
         JButton levelthree = new JButton("3");
@@ -56,11 +49,7 @@ public class Game extends JFrame implements ActionListener {
         gbc.fill = GridBagConstraints.BOTH;
         frame.add(northPanel, gbc);
         northPanel.add(runButton);
-        northPanel.add(stepButton);
-        northPanel.add(turnButton);
-        northPanel.add(paintRed);
-        northPanel.add(paintBlue);
-        northPanel.add(paintGreen);
+        northPanel.add(reset);
         northPanel.add(levelone);
         northPanel.add(leveltwo);
         northPanel.add(levelthree);
@@ -111,15 +100,13 @@ public class Game extends JFrame implements ActionListener {
     public void switchLevel(int newLevelId) {
 
         worldPanel.setPreferredSize(new Dimension(500, 700));
-        workAreaPanel.repaint();
-        workAreaPanel.revalidate();
+        workAreaPanel.resetWorkAreaPanel();
 
         worldPanel.setLevel(newLevelId);
         worldPanel.repaint();
         worldPanel.revalidate();
 
         DataSource.getInstance().resetConnectedBlocks();
-
     }
 
     private static JPanel createPanel(Color color) {
@@ -141,7 +128,6 @@ public class Game extends JFrame implements ActionListener {
                 switchLevel(worldPanel.getWorld().level + 1);
         }
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         boolean world = false;
@@ -152,46 +138,15 @@ public class Game extends JFrame implements ActionListener {
                 //run blocks
                 worldPanel.run();
                 checkLevel();
-                world = true;
-            } else if (button.getText().equals("Step")) {
-                //run blocks
-                worldPanel.runSeparately(button.getText());
-                checkLevel();
-                repaint();
-                world = true;
-            } else if (button.getText().equals("Turn")) {
-                //run blocks
-                worldPanel.runSeparately(button.getText());
-                repaint();
-                world = true;
-            } else if (button.getText().equals("Red")) {
-                //run blocks
-                worldPanel.runSeparately(button.getText());
-                checkLevel();
-                repaint();
-                world = true;
-            } else if (button.getText().equals("Blue")) {
-                //run blocks
-                worldPanel.runSeparately(button.getText());
-                checkLevel();
-                repaint();
-                world = true;
-            } else if (button.getText().equals("Green")) {
-                //run blocks
-                worldPanel.runSeparately(button.getText());
-                checkLevel();
-                repaint();
-                world = true;
+            } else if (button.getText().equals("Reset")) {
+                worldPanel.reset();
             } else {
                 switchLevel(Integer.parseInt(button.getText()));
             }
-
             worldPanel.setPreferredSize(new Dimension(500, 700));
-            if (world) {
-                worldPanel.repaint();
-                worldPanel.revalidate();
-            }
-
+            worldPanel.repaint();
+            worldPanel.revalidate();
         }
     }
 }
+

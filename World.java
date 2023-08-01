@@ -16,7 +16,6 @@ public class World extends JFrame {
         Level currLevel = dataSource.getLevel(this.level);
         this.cells = currLevel.getCells();
         this.spider = currLevel.getSpider();
-
         setSize(width,height);
         setBounds(0, 0, width, height);
         pack();

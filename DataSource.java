@@ -5,6 +5,7 @@ public class DataSource extends Observable {
 
     // class setup
     private static DataSource _instance;
+    private int[][] spiderInit = {{0, 0}, {1, 1}, {3, 1}, {4, 4}, {1, 1}, {4, 0}};
 
     // constructor (private for singleton)
     private DataSource() {
@@ -26,6 +27,10 @@ public class DataSource extends Observable {
 
     public Level getLevel(int id) {
         return levels.get(id - 1);
+    }
+
+    public int[][] getSpiderInit() {
+        return spiderInit;
     }
 
     private void importLevels() {

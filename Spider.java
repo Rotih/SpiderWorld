@@ -28,6 +28,12 @@ public class Spider
 		updateImage();
 	}
 
+	public void resetPos(int x, int y) {
+		this.row = x;
+		this.col = y;
+		this.dir = 0;
+		updateImage();
+	}
 	// Method designed to load all the spider images just once
 	private void importImages()
 	{
