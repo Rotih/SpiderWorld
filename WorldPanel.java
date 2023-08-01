@@ -16,11 +16,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 
     public WorldPanel(int levelId) {
         setLayout(null);
-
-        // Initialize the slider with values. 0 minimum, 3000 maximum and 1500 initial.
         speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 3000, 1500);
-
-        // Set the labels on major tick marks
         speedSlider.setMajorTickSpacing(1500);
         speedSlider.setMinorTickSpacing(100);
         speedSlider.setPaintTicks(true);
@@ -31,16 +27,9 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
         speedSlider.setPaintLabels(true);
         speedSlider.setName("Speed");
         speedSlider.setBounds(100, 600, 300, 50);
-
-        // Add the slider to the panel.
         this.add(speedSlider);
-
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         w = new World(levelId, 2, 2);
-        if (levelId == 7) {
-            sevenX = w.spider.row;
-            sevenY = w.spider.col;
-        }
+
         revalidate();
         repaint();
     }
@@ -52,6 +41,10 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
     public void setLevel(int levelId)
     {
         w = new World(levelId, 2, 2);
+        if (levelId == 7) {
+            sevenX = w.spider.row;
+            sevenY = w.spider.col;
+        }
     }
 
     public void reset() {
