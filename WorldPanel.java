@@ -12,11 +12,29 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
     private int sevenX;
     private int sevenY;
 
-    private JSlider speed;
+    private JSlider speedSlider;
+
     public WorldPanel(int levelId) {
         setLayout(null);
-        speed = new JSlider(JSlider.HORIZONTAL, 0, 3000, 1500);
-        this.add(speed);
+
+        // Initialize the slider with values. 0 minimum, 3000 maximum and 1500 initial.
+        speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 3000, 1500);
+
+        // Set the labels on major tick marks
+        speedSlider.setMajorTickSpacing(1500);
+        speedSlider.setMinorTickSpacing(100);
+        speedSlider.setPaintTicks(true);
+        Hashtable<Integer, JLabel> labelTable = new Hashtable<>();
+        labelTable.put(0, new JLabel("Slow"));
+        labelTable.put(3000, new JLabel("Fast"));
+        speedSlider.setLabelTable(labelTable);
+        speedSlider.setPaintLabels(true);
+        speedSlider.setName("Speed");
+        speedSlider.setBounds(100, 600, 300, 50);
+
+        // Add the slider to the panel.
+        this.add(speedSlider);
+
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         w = new World(levelId, 2, 2);
         if (levelId == 7) {
@@ -27,17 +45,8 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
         repaint();
     }
 
-    private JButton createButton(String text, int x, int y, int width, int height, Color color) {
-        JButton button = new JButton(text);
-        button.setBounds(x, y, width, height);
-        button.setBackground(color);
-        button.setForeground(Color.WHITE);
-        button.setFocusPainted(false);
-        button.setBorderPainted(false);
-        button.setOpaque(true);
-        button.addActionListener(this);
-        this.add(button);
-        return button;
+    private int getAdjustedSpeed() {
+        return 3000 - speedSlider.getValue();
     }
 
     public void setLevel(int levelId)
@@ -67,14 +76,6 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
     public World getWorld() {
         return w;
     }
-    public void paint(Graphics g){
-        for (int row = 0; row < w.cells.length; row++){
-            for (int col = 0; col < w.cells[row].length; col++){
-                int tempId = w.cells[row][col].id;
-                w.cells[row][col].draw(g, tempId, row, col);
-            }
-        }
-    }
 
     public void runSeparately(String instruction) {
         ArrayList<Block> block = new ArrayList<Block>();
@@ -97,7 +98,6 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
         }
         run(block);
     }
-
 
     public void run() {
         ArrayList<Block> currBlocks = DataSource.getInstance().getConnectedBlocks();
@@ -188,9 +188,10 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
                 String [] words = block.getType().split("\\s+");
                 w.cells[w.spider.row][w.spider.col].setColor(words[1]);
             }
-            repaint();
+            this.repaint();
+            this.revalidate();
             try {
-                Thread.sleep(500);
+                Thread.sleep(getAdjustedSpeed());
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -200,6 +201,12 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        for (int row = 0; row < w.cells.length; row++){
+            for (int col = 0; col < w.cells[row].length; col++){
+                int tempId = w.cells[row][col].id;
+                w.cells[row][col].draw(g, tempId, row, col);
+            }
+        }
     }
 
     @Override
