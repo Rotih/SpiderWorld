@@ -130,12 +130,9 @@ public class Game extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        boolean world = false;
-        boolean work = false;
         if (e.getSource() instanceof JButton) {
             JButton button = (JButton) e.getSource();
             if (button.getText().equals("Run")) {
-                //run blocks
                 worldPanel.run();
                 checkLevel();
             } else if (button.getText().equals("Reset")) {
